@@ -40,12 +40,10 @@ const App = () => {
 
  function loadMore(){
      setTimeout(()=>{
-      let length=itemsList.length
-        let foradding=items.slice(length, length+10);
-          let element=[...itemsList];
-         console.log(length, foradding, element);
-        element.splice(length, 0 , ...foradding);
-        setItemsList(element);
+      setItemsList(prevItemsList => {
+        const newItems = items.slice(prevItemsList.length, prevItemsList.length + 10);
+        return [...prevItemsList, ...newItems];
+      });
      }, 2000);
     
  }
